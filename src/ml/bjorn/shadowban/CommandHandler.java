@@ -19,18 +19,11 @@ public class CommandHandler implements CommandExecutor {
             return true;
         }
         switch(arguments[0]){
-            case "help":
-                help(sender);
-                break;
-            case "silent":
-                silent(sender);
-                break;
-            case "reload":
-                reload();
-                break;
-            default:
-                help(sender);
-                break;
+            case "help":    help(sender);   break;
+            case "silent":  silent(sender); break;
+            case "reload":  reload();       break;
+            case "version": version();      break;
+            default:        help(sender);   break;
         }
         return true;
     }
@@ -69,5 +62,8 @@ public class CommandHandler implements CommandExecutor {
     }
     private void reload() {
         plugin.reloadConfig();
+    }
+    private void version() {
+        sender.sendMessage("§bShadowban v0.1.0 enabled");
     }
 }
