@@ -21,7 +21,7 @@ public class CommandHandler implements CommandExecutor {
         switch(arguments[0]){
             case "help":    help(sender);   break;
             case "silent":  silent(sender); break;
-            case "reload":  reload();       break;
+            case "reload":  plugin.reloadConfig(); break;
             case "version": version();      break;
             default:        help(sender);   break;
         }
@@ -59,9 +59,6 @@ public class CommandHandler implements CommandExecutor {
             sender.sendMessage("§aTeraz twoje kary §4sa §awyciszone");
         }
         plugin.saveConfig();
-    }
-    private void reload() {
-        plugin.reloadConfig();
     }
     private void version() {
         sender.sendMessage("§bShadowban v0.1.0 enabled");
