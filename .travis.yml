@@ -1,8 +1,1 @@
 language: java
-deploy:
-  provider: releases
-  api_key:
-    secure: ${API_KEY}
-  file: target/shadowban.jar
-  on:
-    repo: JadaSwiry/Shadowban
