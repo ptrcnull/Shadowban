@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Shadowban" target="1.5" />
+      <module name="Shadowban" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
