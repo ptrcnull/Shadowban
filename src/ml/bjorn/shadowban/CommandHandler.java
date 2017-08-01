@@ -75,10 +75,10 @@ public class CommandHandler implements CommandExecutor {
                 sender.sendMessage("§dMute za: §f" + config.getString("mute." + person + ".reason"));
                 sender.sendMessage("§dNadany przez: §f" + config.getString("mute." + person + ".by"));
                 sender.sendMessage("§dKoniec: §f" + config.getString("mute." + person + ".end"));
+                found = true;
             } else {
                 config.set("mute." + person, null);
             }
-            found = true;
         }
         if(config.contains("ban." + person)){
             long banEnd = config.getLong("ban." + person + ".end");
@@ -86,10 +86,10 @@ public class CommandHandler implements CommandExecutor {
                 sender.sendMessage("§dBan za: §f" + config.getString("ban." + person + ".reason"));
                 sender.sendMessage("§dNadany przez: §f" + config.getString("ban." + person + ".by"));
                 sender.sendMessage("§dKoniec: §f" + config.getString("ban." + person + ".end"));
+                found = true;
             } else {
                 config.set("ban." + person, null);
             }
-            found = true;
         }
         if(config.contains("jail." + person)){
             long jailEnd = config.getLong("jail." + person + ".end");
@@ -97,10 +97,10 @@ public class CommandHandler implements CommandExecutor {
                 sender.sendMessage("§dJail za: §f" + config.getString("jail." + person + ".reason"));
                 sender.sendMessage("§dNadany przez: §f" + config.getString("jail." + person + ".by"));
                 sender.sendMessage("§dKoniec: §f" + config.getString("jail." + person + ".end"));
+                found = true;
             } else {
                 config.set("jail." + person, null);
             }
-            found = true;
         }
         if(!found){
             if(person.equals(sender.getName())){
