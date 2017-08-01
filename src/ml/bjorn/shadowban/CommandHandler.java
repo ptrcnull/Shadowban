@@ -25,7 +25,7 @@ public class CommandHandler implements CommandExecutor {
             case "help":    help(sender); break;
             case "silent":  silent(sender); break;
             case "reload":  plugin.reloadConfig(); break;
-            case "version": version(); break;
+            case "version": version(sender); break;
             case "show":    show(sender, arguments); break;
             default:        help(sender); break;
         }
@@ -63,8 +63,8 @@ public class CommandHandler implements CommandExecutor {
         }
         plugin.saveConfig();
     }
-    private void version() {
-        sender.sendMessage("§bShadowban v0.1.0 enabled");
+    private void version(CommandSender sender) {
+        sender.sendMessage("§bShadowban v0.1.0");
     }
     private void show(CommandSender sender, String[] args) {
         String person = args.length < 2 ? sender.getName() : args[1];
