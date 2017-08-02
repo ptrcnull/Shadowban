@@ -28,7 +28,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
             sender.sendMessage("§cNieprawidłowa komenda! Zobacz /sb help");
             return true;
         }
-        String[] subcommandargs = Arrays.copyOfRange(arguments, 1, arguments.length);
+        String[] subcommandargs = arguments.length != 0 ? Arrays.copyOfRange(arguments, 1, arguments.length) : new String[]{};
         if(subcommandargs.length < subcommand.getMinArgs()) {
             sender.sendMessage("§cZa mało argumentów! Zobacz /sb help");
             return true;
