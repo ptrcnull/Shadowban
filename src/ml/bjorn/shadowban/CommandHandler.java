@@ -4,9 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.bukkit.configuration.file.FileConfiguration;
 
-import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,21 +12,17 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class CommandHandler implements CommandExecutor, TabCompleter {
-    private Main plugin;
-    CommandHandler(Main instance) {
-        plugin = instance;
-    }
 
     private final Map<String, SubCommand> subcommands = new LinkedHashMap<>();
     {
         subcommands.put("help", new HelpSubCommand());
-        subcommands.put("show", new ShowSubCommand(plugin));
-        subcommands.put("silent", new SilentSubCommand(plugin));
-        subcommands.put("reload", new ReloadSubCommand(plugin));
+        subcommands.put("show", new ShowSubCommand());
+        subcommands.put("silent", new SilentSubCommand());
+        subcommands.put("reload", new ReloadSubCommand());
 
     }
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String commandString, String[] arguments) {
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] arguments) {
         SubCommand subcommand = arguments.length == 0 ? subcommands.get("help") : subcommands.get(arguments[0]);
         if(subcommand == null){
             sender.sendMessage("§cNieprawidłowa komenda! Zobacz /sb help");

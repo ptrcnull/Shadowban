@@ -1,13 +1,9 @@
 package ml.bjorn.shadowban;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 
 public class ReloadSubCommand implements SubCommand {
-    private Main plugin;
-    ReloadSubCommand(Main instance){
-        plugin = instance;
-    }
+    private Main plugin = Main.plugin;
 
     @Override
     public int getMinArgs() {

@@ -4,12 +4,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class SilentSubCommand implements SubCommand {
-    private Main plugin;
-    private FileConfiguration config;
-    SilentSubCommand(Main instance){
-        plugin = instance;
-        config = instance.getConfig();
-    }
+    private Main plugin = Main.plugin;
+    private FileConfiguration config = plugin.getConfig();
 
     @Override
     public int getMinArgs() {

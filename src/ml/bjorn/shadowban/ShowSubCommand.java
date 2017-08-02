@@ -6,12 +6,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import java.time.Instant;
 
 public class ShowSubCommand implements SubCommand {
-    private Main plugin;
-    private FileConfiguration config;
-    ShowSubCommand(Main instance){
-        plugin = instance;
-        config = plugin.getConfig();
-    }
+    private Main plugin = Main.plugin;
+    private FileConfiguration config = plugin.getConfig();
 
     @Override
     public int getMinArgs() {
