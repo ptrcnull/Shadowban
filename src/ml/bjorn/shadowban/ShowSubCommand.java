@@ -23,7 +23,7 @@ public class ShowSubCommand implements SubCommand {
             if(muteEnd > Instant.now().getEpochSecond()){
                 sender.sendMessage("§dMute za: §f" + config.getString("mute." + person + ".reason"));
                 sender.sendMessage("§dNadany przez: §f" + config.getString("mute." + person + ".by"));
-                sender.sendMessage("§dKoniec: §f" + config.getString("mute." + person + ".end"));
+                sender.sendMessage("§dKoniec: §f" + config.getLong("mute." + person + ".end"));
                 found = true;
             } else {
                 config.set("mute." + person, null);
@@ -35,7 +35,7 @@ public class ShowSubCommand implements SubCommand {
             if(banEnd > Instant.now().getEpochSecond()){
                 sender.sendMessage("§dBan za: §f" + config.getString("ban." + person + ".reason"));
                 sender.sendMessage("§dNadany przez: §f" + config.getString("ban." + person + ".by"));
-                sender.sendMessage("§dKoniec: §f" + config.getString("ban." + person + ".end"));
+                sender.sendMessage("§dKoniec: §f" + config.getLong("ban." + person + ".end"));
                 found = true;
             } else {
                 config.set("ban." + person, null);
@@ -47,7 +47,7 @@ public class ShowSubCommand implements SubCommand {
             if(jailEnd > Instant.now().getEpochSecond()){
                 sender.sendMessage("§dJail za: §f" + config.getString("jail." + person + ".reason"));
                 sender.sendMessage("§dNadany przez: §f" + config.getString("jail." + person + ".by"));
-                sender.sendMessage("§dKoniec: §f" + config.getString("jail." + person + ".end"));
+                sender.sendMessage("§dKoniec: §f" + config.getLong("jail." + person + ".end"));
                 found = true;
             } else {
                 config.set("jail." + person, null);
