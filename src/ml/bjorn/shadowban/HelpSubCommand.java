@@ -29,6 +29,6 @@ public class HelpSubCommand implements SubCommand {
         if(sender.hasPermission("shadowban.silent")) {
             sender.sendMessage("§a silent - przelacza tryb cichy");
         }
-        return false;
+        return true;
     }
 }
