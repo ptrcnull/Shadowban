@@ -37,7 +37,7 @@ public class MuteSubCommand implements SubCommand {
         config.addDefault("silent." + sender.getName(), false);
         plugin.saveConfig();
         Boolean silent = config.getBoolean("silent." + sender.getName());
-        config.set("mute." + args[1] + ".reason", reason);
+        config.set("mute." + args[0] + ".reason", reason);
         config.set("mute." + args[0] + ".by", sender.getName());
         config.set("mute." + args[0] + ".end", time);
         config.set("mute." + args[0] + ".silent", silent);
