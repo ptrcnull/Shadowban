@@ -13,7 +13,7 @@ public class ReloadSubCommand implements SubCommand {
     @Override
     public boolean handle(CommandSender sender, String[] args) {
         if (!sender.hasPermission("shadowban.reload")) {
-            sender.sendMessage("§cBrak permisji.");
+            sender.sendMessage("§cBrak uprawnien.");
             return true;
         }
         plugin.reloadConfig();
