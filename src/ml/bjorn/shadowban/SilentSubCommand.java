@@ -14,6 +14,10 @@ public class SilentSubCommand implements SubCommand {
 
     @Override
     public boolean handle(CommandSender sender, String[] args) {
+        if (!sender.hasPermission("shadowban.silent")) {
+            sender.sendMessage("§cBrak permisji.");
+            return true;
+        }
         String path = "silent." + sender.getName();
         if(config.isSet(path) && config.getBoolean(path)) {
             config.set(path, false);
