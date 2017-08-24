@@ -22,7 +22,7 @@ public class ShowSubCommand implements SubCommand {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         TimeZone tz = TimeZone.getTimeZone("Europe/Warsaw");
         sdf.setTimeZone(tz);
-        String person = args.length < 2 ? sender.getName() : args[1];
+        String person = args.length < 1 ? sender.getName() : args[0];
         boolean found = false;
         if(config.contains("mute." + person)){
             long muteEnd = config.getLong("mute." + person + ".end");
