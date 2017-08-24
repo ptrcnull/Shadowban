@@ -38,13 +38,13 @@ public class MuteSubCommand implements SubCommand {
         plugin.saveConfig();
         Boolean silent = config.getBoolean("silent." + sender.getName());
         config.set("mute." + args[1] + ".reason", reason);
-        config.set("mute." + args[1] + ".by", sender.getName());
-        config.set("mute." + args[1] + ".end", time);
-        config.set("mute." + args[1] + ".silent", silent);
+        config.set("mute." + args[0] + ".by", sender.getName());
+        config.set("mute." + args[0] + ".end", time);
+        config.set("mute." + args[0] + ".silent", silent);
         plugin.saveConfig();
-        String message = "§fGracz §e" + args[1] + " §fzostal wyciszony";
+        String message = "§fGracz §e" + args[0] + " §fzostal wyciszony";
         if (time != 0L) {
-            message = message + " na §e" + args[2];
+            message = message + " na §e" + args[1];
         }
         if (!Objects.equals(reason, "")){
             message = message + " §fza §e" + reason;
