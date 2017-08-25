@@ -6,6 +6,7 @@ Plugin Shadowban dla Spigot 1.11.2
 - Możliwość cichego ukarania gracza
 
 ### Komendy:
+
 | Komenda | Opis działania |
 | --- | --- |
 | `/sb help` | wyswietla wiadomosc pomocy |
@@ -17,8 +18,9 @@ Plugin Shadowban dla Spigot 1.11.2
 | `/sb silent` | przelacza tryb cichy |
 
 ### Permisje:
-| Permisja | Opis
-| --- | ---
+
+| Permisja | Opis |
+| --- | --- |
 | `shadowban.see.others` | podglądanie cudzych kar |
 | `shadowban.mute` | wyciszanie |
 | `shadowban.ban` | banowanie |
