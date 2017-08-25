@@ -1,6 +1,6 @@
 # Shadowban [![Build Status](https://travis-ci.org/JadaSwiry/Shadowban.svg?branch=master)](https://travis-ci.org/JadaSwiry/Shadowban)
 
-## Pobierz najnowszą wersję [tutaj](https://github.com/JadaSwiry/Shadowban/releases/latest)
+#### Pobierz najnowszą wersję [tutaj](https://github.com/JadaSwiry/Shadowban/releases/latest)
 
 ### Założenia:
 - Proste wymierzanie kar graczom
