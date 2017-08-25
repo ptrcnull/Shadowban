@@ -1,11 +1,14 @@
 package ml.bjorn.shadowban;
 
+import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.util.Vector;
 
 import java.time.Instant;
 
@@ -14,7 +17,7 @@ public class EventListener implements Listener {
     private FileConfiguration config = plugin.getConfig();
 
     @EventHandler (priority = EventPriority.HIGHEST)
-    public void onAsyncPlayerChatEvent(AsyncPlayerChatEvent event){
+    public void onAsyncPlayerChatEvent(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
         if (config.contains("mute." + player.getName())) {
             long muteEnd = config.getLong("mute." + player.getName() + ".end");
@@ -28,6 +31,29 @@ public class EventListener implements Listener {
                 event.setCancelled(true);
             } else {
                 config.set("mute." + player.getName(), null);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerMove(PlayerMoveEvent event) {
+        Player player = event.getPlayer();
+        if (config.contains("ban." + player.getName())) {
+            long banEnd = config.getLong("ban." + player.getName() + ".end");
+            if (banEnd > Instant.now().toEpochMilli() || banEnd == 0L) {
+                double x = event.getFrom().getX();
+                double z = event.getFrom().getZ();
+                if (x > 99){
+                    player.setVelocity(new Vector(-1, 0.2, 0));
+                } else if (z > 99){
+                    player.setVelocity(new Vector(0, 0.2, -1));
+                } else if (x < -99) {
+                    player.setVelocity(new Vector(1, 0.2, 0));
+                } else if (z < -99) {
+                    player.setVelocity(new Vector(0, 0.2, 1));
+                }
+            } else {
+                config.set("ban." + player.getName(), null);
             }
         }
     }
