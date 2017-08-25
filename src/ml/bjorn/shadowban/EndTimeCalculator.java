@@ -9,7 +9,12 @@ class EndTimeCalculator {
     private static final Set<String> units = ImmutableSet.of("d", "h", "m", "s");
 
     static long get(String input){
-        Long length = Long.parseLong(input.substring(0, input.length() - 1));
+        Long length;
+        try {
+            length = Long.parseLong(input.substring(0, input.length() - 1));
+        } catch (Throwable error) {
+            return 0;
+        }
         String unit = input.substring(input.length() - 1);
         if(!units.contains(unit)){
             return 0;
