@@ -26,12 +26,12 @@ public class ShowSubCommand implements SubCommand {
         boolean found = false;
         if(config.contains("mute." + person)){
             long muteEnd = config.getLong("mute." + person + ".end");
-            if(muteEnd > Instant.now().toEpochMilli()){
+            if(muteEnd > Instant.now().toEpochMilli() || muteEnd == 0L){
                 String end;
                 if(muteEnd == 0L){
                     end = "permanentny";
                 } else {
-                    end = sdf.format(new Date(config.getLong("mute." + person + ".end")));
+                    end = sdf.format(new Date(muteEnd));
                 }
                 sender.sendMessage("§dMute za: §f" + config.getString("mute." + person + ".reason"));
                 sender.sendMessage("§dNadany przez: §f" + config.getString("mute." + person + ".by"));
@@ -44,12 +44,12 @@ public class ShowSubCommand implements SubCommand {
         }
         if(config.contains("ban." + person)){
             long banEnd = config.getLong("ban." + person + ".end");
-            if(banEnd > Instant.now().toEpochMilli()){
+            if(banEnd > Instant.now().toEpochMilli() || banEnd == 0L){
                 String end;
                 if(banEnd == 0L){
                     end = "permanentny";
                 } else {
-                    end = sdf.format(new Date(config.getLong("ban." + person + ".end")));
+                    end = sdf.format(new Date(banEnd));
                 }
                 sender.sendMessage("§dBan za: §f" + config.getString("ban." + person + ".reason"));
                 sender.sendMessage("§dNadany przez: §f" + config.getString("ban." + person + ".by"));
@@ -62,12 +62,12 @@ public class ShowSubCommand implements SubCommand {
         }
         if(config.contains("jail." + person)){
             long jailEnd = config.getLong("jail." + person + ".end");
-            if(jailEnd > Instant.now().toEpochMilli()){
+            if(jailEnd > Instant.now().toEpochMilli() || jailEnd == 0L){
                 String end;
                 if(jailEnd == 0L){
                     end = "permanentny";
                 } else {
-                    end = sdf.format(new Date(config.getLong("jail." + person + ".end")));
+                    end = sdf.format(new Date(jailEnd));
                 }
                 sender.sendMessage("§dJail za: §f" + config.getString("jail." + person + ".reason"));
                 sender.sendMessage("§dNadany przez: §f" + config.getString("jail." + person + ".by"));
