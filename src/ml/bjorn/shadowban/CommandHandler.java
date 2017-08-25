@@ -15,12 +15,13 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
     {
         subcommands.put("help", new HelpSubCommand());
         subcommands.put("show", new ShowSubCommand());
-        subcommands.put("mute", new MuteSubCommand());
-        subcommands.put("unmute", new UnmuteSubCommand());
+        subcommands.put("mute", new Punishment("mute"));
+        subcommands.put("unmute", new Apology("mute"));
+        subcommands.put("ban", new Punishment("ban"));
+        subcommands.put("unban", new Apology("ban"));
         subcommands.put("silent", new SilentSubCommand());
         subcommands.put("reload", new ReloadSubCommand());
-        subcommands.put("restart", new RestartSubCommand());
-
+        subcommands.put("version", new VersionSubCommand());
     }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] arguments) {
