@@ -6,9 +6,15 @@ import org.bukkit.configuration.file.FileConfiguration;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class MuteSubCommand implements SubCommand {
+public class Punishment implements SubCommand {
     private Main plugin = Main.plugin;
     private FileConfiguration config = plugin.getConfig();
+
+    private String configName;
+
+    Punishment (String configName) {
+        this.configName = configName;
+    }
 
     @Override
     public int getMinArgs() {
@@ -17,7 +23,7 @@ public class MuteSubCommand implements SubCommand {
 
     @Override
     public boolean handle(CommandSender sender, String[] args) {
-        if (!sender.hasPermission("shadowban.mute")) {
+        if (!sender.hasPermission("shadowban." + configName)) {
             sender.sendMessage("§cBrak uprawnien.");
             return true;
         }
@@ -37,23 +43,34 @@ public class MuteSubCommand implements SubCommand {
         config.addDefault("silent." + sender.getName(), false);
         plugin.saveConfig();
         Boolean silent = config.getBoolean("silent." + sender.getName());
-        config.set("mute." + args[0] + ".reason", reason);
-        config.set("mute." + args[0] + ".by", sender.getName());
-        config.set("mute." + args[0] + ".end", time);
-        config.set("mute." + args[0] + ".silent", silent);
+        String node = configName + "." + args[0];
+        config.set(node + ".reason", reason);
+        config.set(node + ".by", sender.getName());
+        config.set(node + ".end", time);
+        config.set(node + ".silent", silent);
         plugin.saveConfig();
-        String message = "§fGracz §e" + args[0] + " §fzostal wyciszony";
+        String message = "§fGracz §e" + args[0] + " §fzostal ";
+        switch (configName) {
+            case "mute": message += "wyciszony"; break;
+            case "ban": message += "zbanowany"; break;
+            case "jail": message += "uwieziony"; break;
+        }
         if (time != 0L) {
-            message = message + " na §e" + args[1];
+            message += " na §e" + args[1];
         }
         if (!Objects.equals(reason, "")){
-            message = message + " §fza §e" + reason;
+            message += " §fza §e" + reason;
         }
         if (!silent) {
             plugin.getServer().broadcastMessage("§7[§6§lJada§e§lSwiry§7] " + message);
         } else {
             sender.sendMessage(message);
         }
+
+        if (Objects.equals(configName, "ban")) {
+            plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), "spawn " + args[0]);
+        }
+
         return true;
     }
 }
