@@ -16,9 +16,11 @@ public class UnmuteSubCommand implements SubCommand {
     public boolean handle(CommandSender sender, String[] args) {
         if (!sender.hasPermission("shadowban.mute")) {
             sender.sendMessage("§cBrak uprawnien.");
+            return true;
         }
         if (!config.contains("mute." + args[0])) {
             sender.sendMessage("§cGracz " + args[0] + " nie jest wyciszony.");
+            return true;
         }
         config.set("mute." + args[0], null);
         plugin.saveConfig();
