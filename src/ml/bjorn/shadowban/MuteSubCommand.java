@@ -51,8 +51,9 @@ public class MuteSubCommand implements SubCommand {
         }
         if (!silent) {
             plugin.getServer().broadcastMessage("§7[§6§lJada§e§lSwiry§7] " + message);
+        } else {
+            sender.sendMessage(message);
         }
-        sender.sendMessage(message);
         return true;
     }
 }
