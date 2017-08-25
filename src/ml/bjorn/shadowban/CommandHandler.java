@@ -5,13 +5,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Arrays;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CommandHandler implements CommandExecutor, TabCompleter {
+    private Main plugin = Main.plugin;
 
     private final Map<String, SubCommand> subcommands = new LinkedHashMap<>();
     {
@@ -41,8 +39,14 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String s, String[] strings) {
-        return subcommands.keySet().stream()
-        .filter(subcommand -> subcommand.startsWith(strings[0]))
-        .collect(Collectors.toList());
+        if (strings.length == 1 ) {
+            return subcommands.keySet().stream()
+                    .filter(subcommand -> subcommand.startsWith(strings[0]))
+                    .collect(Collectors.toList());
+        } else {
+            List<String> players = new ArrayList<>();
+            plugin.getServer().getOnlinePlayers().forEach(player -> players.add(player.getName()));
+            return players;
+        }
     }
 }
