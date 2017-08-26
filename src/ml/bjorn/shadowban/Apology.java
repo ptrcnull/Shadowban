@@ -33,7 +33,7 @@ public class Apology implements SubCommand {
             sender.sendMessage(message);
             return true;
         }
-        config.set("mute." + args[0], null);
+        config.set(configName + "." + args[0], null);
         plugin.saveConfig();
         String message = "§aGracz " + args[0];
         switch (configName) {

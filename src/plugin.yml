@@ -1,5 +1,5 @@
 name: Shadowban
-version: 0.5.0
+version: 0.5.1
 author: Bjornskjald
 main: ml.bjorn.shadowban.Main
 

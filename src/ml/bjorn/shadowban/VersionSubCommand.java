@@ -13,7 +13,7 @@ public class VersionSubCommand implements SubCommand {
 
     @Override
     public boolean handle(CommandSender sender, String[] args) {
-        sender.sendMessage("Shadowban v0.5.0");
+        sender.sendMessage("Shadowban v0.5.1");
         return true;
     }
 }
