@@ -70,7 +70,12 @@ public class Punishment implements SubCommand {
         if (Objects.equals(configName, "ban")) {
             plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), "spawn " + args[0]);
         }
-
+		if (Objects.equals(configName, "jail")) {
+            if (config.contains("jailloc")) {
+				
+			}
+			
+        }
         return true;
     }
 }
