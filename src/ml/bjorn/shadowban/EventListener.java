@@ -67,8 +67,8 @@ public class EventListener implements Listener {
                 double x = event.getTo().getX();
                 double z = event.getTo().getZ();
 				if (x > 99 || x < -99 || z > 99 || z < -99) {
-					player.sendMessage("Nie mozesz tego zrobic, masz bana!")
-					event.setCancelled(true)
+					player.sendMessage("Nie mozesz tego zrobic, masz bana!");
+					event.setCancelled(true);
 				}
 			} else {
 				config.set("ban." + player.getName(), null);
