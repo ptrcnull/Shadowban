@@ -19,6 +19,8 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
         subcommands.put("unmute", new Apology("mute"));
         subcommands.put("ban", new Punishment("ban"));
         subcommands.put("unban", new Apology("ban"));
+        subcommands.put("jail", new Punishment("jail"));
+        subcommands.put("unjail", new Apology("jail"));
         subcommands.put("silent", new SilentSubCommand());
         subcommands.put("reload", new ReloadSubCommand());
         subcommands.put("version", new VersionSubCommand());
