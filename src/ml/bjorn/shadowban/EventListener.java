@@ -57,9 +57,17 @@ public class EventListener implements Listener {
                 config.set("ban." + player.getName(), null);
             }
         }
+		if (config.contains("jail." + player.getName())) {
+			long jailEnd = config.getLong("jail." + player.getName() + ".end");
+            if (jailEnd > Instant.now().toEpochMilli() || jailEnd == 0L) {
+				event.setCancelled(true);
+			} else {
+				config.set("jail." + player.getName(), null);
+			}
+		}
     }
 	
-	@EventHandler
+	@EventHandler (priority = EventPriority.HIGHEST)
 	public void onPlayerTeleport(PlayerTeleportEvent event) {
 		Player player = event.getPlayer();
 		if (config.contains("ban." + player.getName())) {
@@ -73,6 +81,19 @@ public class EventListener implements Listener {
 				}
 			} else {
 				config.set("ban." + player.getName(), null);
+			}
+		}
+		if (config.contains("jail." + player.getName())) {
+			long jailEnd = config.getLong("jail." + player.getName() + ".end");
+			if (jailEnd > Instant.now().toEpochMilli() || jailEnd == 0L) {
+                double x = event.getTo().getX();
+                double z = event.getTo().getZ();
+				if (x > 99 || x < -99 || z > 99 || z < -99) {
+					player.sendMessage("Nie mozesz tego zrobic, jestes w wiezieniu!");
+					event.setCancelled(true);
+				}
+			} else {
+				config.set("jail." + player.getName(), null);
 			}
 		}
 	}
