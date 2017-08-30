@@ -23,7 +23,7 @@ public class Apology implements SubCommand {
             sender.sendMessage("§cBrak uprawnien.");
             return true;
         }
-        String selector = "players." + args[0] + configName;
+        String selector = "players." + args[0] + "." + configName;
         if (!config.contains(selector)) {
             String message = "§cGracz " + args[0] + " nie jest ";
             switch (configName) {
