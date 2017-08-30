@@ -47,7 +47,7 @@ public class Punishment implements SubCommand {
         config.addDefault("players." + sender.getName() + ".silent", false);
         plugin.saveConfig();
         Boolean silent = config.getBoolean("players." + sender.getName() + ".silent");
-        String selector = "players." + args[0] + configName;
+        String selector = "players." + args[0] + "." + configName;
         config.set(selector + ".reason", reason);
         config.set(selector + ".by", sender.getName());
         config.set(selector + ".end", time);
