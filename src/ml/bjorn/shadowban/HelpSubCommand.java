@@ -18,12 +18,20 @@ public class HelpSubCommand implements SubCommand {
         } else {
             sender.sendMessage("§a show - pokazuje aktywne kary na twoim koncie");
         }
+
         if(sender.hasPermission("shadowban.mute")) {
             sender.sendMessage("§a mute <gracz> [czas] [powod] - wycisza gracza");
             sender.sendMessage("§a unmute <gracz> - odwycisza gracza");
         }
+
         if(sender.hasPermission("shadowban.ban")){
             sender.sendMessage("§a ban <gracz> [czas] [powod] - banuje gracza");
+            sender.sendMessage("§a unban <gracz> - odbanowuje gracza");
+        }
+
+        if(sender.hasPermission("shadowban.jail")){
+            sender.sendMessage("§a jail <gracz> [czas] [powod] - wiezi gracza");
+            sender.sendMessage("§a unban <gracz> - uwalnia gracza");
         }
 
         if(sender.hasPermission("shadowban.silent")) {

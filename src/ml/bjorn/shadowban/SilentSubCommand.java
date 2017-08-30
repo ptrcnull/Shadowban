@@ -18,8 +18,8 @@ public class SilentSubCommand implements SubCommand {
             sender.sendMessage("§cBrak permisji.");
             return true;
         }
-        String path = "silent." + sender.getName();
-        if(config.isSet(path) && config.getBoolean(path)) {
+        String path = "players." + sender.getName() + ".silent";
+        if(config.getBoolean(path, true)) {
             config.set(path, false);
             sender.sendMessage("§aTeraz twoje kary §4nie sa §awyciszone");
         } else {

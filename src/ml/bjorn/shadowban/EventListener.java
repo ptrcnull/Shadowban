@@ -1,6 +1,6 @@
 package ml.bjorn.shadowban;
 
-import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,10 +20,11 @@ public class EventListener implements Listener {
     @EventHandler (priority = EventPriority.HIGHEST)
     public void onAsyncPlayerChatEvent(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
-        if (config.contains("mute." + player.getName())) {
-            long muteEnd = config.getLong("mute." + player.getName() + ".end");
+        String muteSel = "players." + player.getName() + ".mute";
+        if (config.contains(muteSel)) {
+            long muteEnd = config.getLong(muteSel + ".end");
             if (muteEnd > Instant.now().toEpochMilli() || muteEnd == 0L) {
-                if(config.getBoolean("mute." + player.getName() + ".silent")) {
+                if(config.getBoolean(muteSel + ".silent")) {
                     String message = player.getDisplayName();
                     message += "§f: ";
                     message += event.getMessage();
@@ -31,7 +32,7 @@ public class EventListener implements Listener {
                 }
                 event.setCancelled(true);
             } else {
-                config.set("mute." + player.getName(), null);
+                config.set(muteSel, null);
             }
         }
     }
@@ -39,8 +40,9 @@ public class EventListener implements Listener {
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
-        if (config.contains("ban." + player.getName())) {
-            long banEnd = config.getLong("ban." + player.getName() + ".end");
+        String banSel = "players." + player.getName() + ".ban";
+        if (config.contains(banSel)) {
+            long banEnd = config.getLong(banSel + ".end");
             if (banEnd > Instant.now().toEpochMilli() || banEnd == 0L) {
                 double x = event.getFrom().getX();
                 double z = event.getFrom().getZ();
@@ -54,15 +56,16 @@ public class EventListener implements Listener {
                     player.setVelocity(new Vector(0, 0.2, 1));
                 }
             } else {
-                config.set("ban." + player.getName(), null);
+                config.set(banSel, null);
             }
         }
-		if (config.contains("jail." + player.getName())) {
-			long jailEnd = config.getLong("jail." + player.getName() + ".end");
+        String jailSel = "players." + player.getName() + ".jail";
+		if (config.contains(jailSel)) {
+			long jailEnd = config.getLong(jailSel + ".end");
             if (jailEnd > Instant.now().toEpochMilli() || jailEnd == 0L) {
 				event.setCancelled(true);
 			} else {
-				config.set("jail." + player.getName(), null);
+				config.set(jailSel, null);
 			}
 		}
     }
@@ -70,30 +73,33 @@ public class EventListener implements Listener {
 	@EventHandler (priority = EventPriority.HIGHEST)
 	public void onPlayerTeleport(PlayerTeleportEvent event) {
 		Player player = event.getPlayer();
-		if (config.contains("ban." + player.getName())) {
-			long banEnd = config.getLong("ban." + player.getName() + ".end");
+        String banSel = "players." + player.getName() + ".ban";
+        World defaultWorld = plugin.getServer().getWorlds().get(0);
+		if (config.contains(banSel)) {
+			long banEnd = config.getLong(banSel + ".end");
 			if (banEnd > Instant.now().toEpochMilli() || banEnd == 0L) {
                 double x = event.getTo().getX();
                 double z = event.getTo().getZ();
-				if (x > 99 || x < -99 || z > 99 || z < -99) {
+				if ((x > 99 || x < -99 || z > 99 || z < -99) || event.getTo().getWorld() != defaultWorld) {
 					player.sendMessage("Nie mozesz tego zrobic, masz bana!");
 					event.setCancelled(true);
 				}
 			} else {
-				config.set("ban." + player.getName(), null);
+				config.set(banSel, null);
 			}
 		}
-		if (config.contains("jail." + player.getName())) {
-			long jailEnd = config.getLong("jail." + player.getName() + ".end");
+        String jailSel = "players." + player.getName() + ".jail";
+		if (config.contains(jailSel)) {
+			long jailEnd = config.getLong(jailSel + ".end");
 			if (jailEnd > Instant.now().toEpochMilli() || jailEnd == 0L) {
                 double x = event.getTo().getX();
                 double z = event.getTo().getZ();
-				if (x > 99 || x < -99 || z > 99 || z < -99) {
+				if ((x > 99 || x < -99 || z > 99 || z < -99) || event.getTo().getWorld() != defaultWorld) {
 					player.sendMessage("Nie mozesz tego zrobic, jestes w wiezieniu!");
 					event.setCancelled(true);
 				}
 			} else {
-				config.set("jail." + player.getName(), null);
+				config.set(jailSel, null);
 			}
 		}
 	}

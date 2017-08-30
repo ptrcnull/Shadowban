@@ -24,8 +24,11 @@ public class ShowSubCommand implements SubCommand {
         sdf.setTimeZone(tz);
         String person = args.length < 1 ? sender.getName() : args[0];
         boolean found = false;
-        if(config.contains("mute." + person)){
-            long muteEnd = config.getLong("mute." + person + ".end");
+        String muteSel = "players." + person + ".mute";
+        String banSel = "players." + person + ".ban";
+        String jailSel = "players." + person + ".jail";
+        if(config.contains(muteSel)){
+            long muteEnd = config.getLong(muteSel + ".end");
             if(muteEnd > Instant.now().toEpochMilli() || muteEnd == 0L){
                 String end;
                 if(muteEnd == 0L){
@@ -33,17 +36,17 @@ public class ShowSubCommand implements SubCommand {
                 } else {
                     end = sdf.format(new Date(muteEnd));
                 }
-                sender.sendMessage("§dMute za: §f" + config.getString("mute." + person + ".reason"));
-                sender.sendMessage("§dNadany przez: §f" + config.getString("mute." + person + ".by"));
+                sender.sendMessage("§dMute za: §f" + config.getString(muteSel + ".reason"));
+                sender.sendMessage("§dNadany przez: §f" + config.getString(muteSel + ".by"));
                 sender.sendMessage("§dKoniec: §f" + end);
                 found = true;
             } else {
-                config.set("mute." + person, null);
+                config.set(muteSel, null);
                 plugin.saveConfig();
             }
         }
-        if(config.contains("ban." + person)){
-            long banEnd = config.getLong("ban." + person + ".end");
+        if(config.contains(banSel)){
+            long banEnd = config.getLong(banSel + ".end");
             if(banEnd > Instant.now().toEpochMilli() || banEnd == 0L){
                 String end;
                 if(banEnd == 0L){
@@ -51,17 +54,17 @@ public class ShowSubCommand implements SubCommand {
                 } else {
                     end = sdf.format(new Date(banEnd));
                 }
-                sender.sendMessage("§dBan za: §f" + config.getString("ban." + person + ".reason"));
-                sender.sendMessage("§dNadany przez: §f" + config.getString("ban." + person + ".by"));
+                sender.sendMessage("§dBan za: §f" + config.getString(banSel + ".reason"));
+                sender.sendMessage("§dNadany przez: §f" + config.getString(banSel + ".by"));
                 sender.sendMessage("§dKoniec: §f" + end);
                 found = true;
             } else {
-                config.set("ban." + person, null);
+                config.set(banSel, null);
                 plugin.saveConfig();
             }
         }
-        if(config.contains("jail." + person)){
-            long jailEnd = config.getLong("jail." + person + ".end");
+        if(config.contains(jailSel)){
+            long jailEnd = config.getLong(jailSel + ".end");
             if(jailEnd > Instant.now().toEpochMilli() || jailEnd == 0L){
                 String end;
                 if(jailEnd == 0L){
@@ -69,12 +72,12 @@ public class ShowSubCommand implements SubCommand {
                 } else {
                     end = sdf.format(new Date(jailEnd));
                 }
-                sender.sendMessage("§dJail za: §f" + config.getString("jail." + person + ".reason"));
-                sender.sendMessage("§dNadany przez: §f" + config.getString("jail." + person + ".by"));
+                sender.sendMessage("§dJail za: §f" + config.getString(jailSel + ".reason"));
+                sender.sendMessage("§dNadany przez: §f" + config.getString(jailSel + ".by"));
                 sender.sendMessage("§dKoniec: §f" + end);
                 found = true;
             } else {
-                config.set("jail." + person, null);
+                config.set(jailSel, null);
                 plugin.saveConfig();
             }
         }
