@@ -27,7 +27,7 @@ public class Punishment implements SubCommand {
             sender.sendMessage("§cBrak uprawnien.");
             return true;
         }
-        if (!plugin.getServer().getPlayerExact(args[0]).isOnline()) {
+        if (plugin.getServer().getPlayerExact(args[0]) != null) {
             sender.sendMessage("Nie znaleziono gracza, mozliwe ze jest offline.");
             return true;
         }
