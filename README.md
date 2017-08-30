@@ -30,5 +30,5 @@
 
 ### TODO (do zrobienia):
 - możliwość zmiany tekstów
-- więzienia
+- ~~więzienia~~
 - ostrzeżenia
