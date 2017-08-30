@@ -31,7 +31,7 @@ public class HelpSubCommand implements SubCommand {
 
         if(sender.hasPermission("shadowban.jail")){
             sender.sendMessage("§a jail <gracz> [czas] [powod] - wiezi gracza");
-            sender.sendMessage("§a unban <gracz> - uwalnia gracza");
+            sender.sendMessage("§a unjail <gracz> - uwalnia gracza");
         }
 
         if(sender.hasPermission("shadowban.silent")) {
