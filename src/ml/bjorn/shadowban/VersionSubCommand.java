@@ -5,7 +5,6 @@ import org.bukkit.plugin.PluginManager;
 
 public class VersionSubCommand implements SubCommand {
     private Main plugin = Main.plugin;
-    private PluginManager manager = plugin.getServer().getPluginManager();
     @Override
     public int getMinArgs() {
         return 0;
@@ -13,7 +12,7 @@ public class VersionSubCommand implements SubCommand {
 
     @Override
     public boolean handle(CommandSender sender, String[] args) {
-        sender.sendMessage("Shadowban v0.5.1");
+        sender.sendMessage("Shadowban v" + plugin.getDescription().getVersion());
         return true;
     }
 }
