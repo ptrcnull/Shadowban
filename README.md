@@ -10,13 +10,17 @@
 
 | Komenda | Opis działania |
 | --- | --- |
-| `/sb help` | wyswietla wiadomosc pomocy |
+| `/sb help` | wyświetla wiadomość pomocy |
+| `/sb version` | wyświetla wersję pluginu |
+| `/sb reload` | przeładowuje konfigurację pluginu |
 | `/sb show [gracz]` | pokazuje aktywne kary |
 | `/sb mute <gracz> [czas] [powod]` | wycisza gracza |
 | `/sb unmute <gracz>` | odwycisza gracza |
 | `/sb ban <gracz> [czas] [powod]` | banuje gracza |
 | `/sb unban <gracz> [czas] [powod]` | odbanowuje gracza |
-| `/sb silent` | przelacza tryb cichy |
+| `/sb jail <gracz> [czas] [powod]` | więzi gracza |
+| `/sb unjail <gracz> [czas] [powod]` | uwalnia gracza |
+| `/sb silent` | przełącza tryb cichy |
 
 ### Permisje:
 
@@ -25,10 +29,11 @@
 | `shadowban.see.others` | podglądanie cudzych kar |
 | `shadowban.mute` | wyciszanie |
 | `shadowban.ban` | banowanie |
+| `shadowban.jail` | więzienie |
 | `shadowban.silent` | wyciszanie swoich kar |
 | `shadowban.reload` | przeładowanie konfiguracji |
 
 ### TODO (do zrobienia):
 - możliwość zmiany tekstów
-- więzienia
+- ~~więzienia~~
 - ostrzeżenia

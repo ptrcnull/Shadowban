@@ -27,6 +27,10 @@ public class Punishment implements SubCommand {
             sender.sendMessage("§cBrak uprawnien.");
             return true;
         }
+        if (plugin.getServer().getPlayerExact(args[0]) == null) {
+            sender.sendMessage("Nie znaleziono gracza, mozliwe ze jest offline.");
+            return true;
+        }
         Long time;
         String reason;
         if (args.length < 2) {
@@ -40,14 +44,14 @@ public class Punishment implements SubCommand {
                 reason = String.join(" ", Arrays.copyOfRange(args, 2, args.length));
             }
         }
-        config.addDefault("silent." + sender.getName(), false);
+        config.addDefault("players." + sender.getName() + ".silent", false);
         plugin.saveConfig();
-        Boolean silent = config.getBoolean("silent." + sender.getName());
-        String node = configName + "." + args[0];
-        config.set(node + ".reason", reason);
-        config.set(node + ".by", sender.getName());
-        config.set(node + ".end", time);
-        config.set(node + ".silent", silent);
+        Boolean silent = config.getBoolean("players." + sender.getName() + ".silent");
+        String selector = "players." + args[0] + "." + configName;
+        config.set(selector + ".reason", reason);
+        config.set(selector + ".by", sender.getName());
+        config.set(selector + ".end", time);
+        config.set(selector + ".silent", silent);
         plugin.saveConfig();
         String message = "§fGracz §e" + args[0] + " §fzostal ";
         switch (configName) {
@@ -68,13 +72,10 @@ public class Punishment implements SubCommand {
         }
 
         if (Objects.equals(configName, "ban")) {
-            plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), "spawn " + args[0]);
+            BanHandler.handle(plugin.getServer().getPlayerExact(args[0]), plugin);
         }
 		if (Objects.equals(configName, "jail")) {
-            if (config.contains("jailloc")) {
-				
-			}
-			
+            JailHandler.handle(plugin.getServer().getPlayerExact(args[0]), plugin);
         }
         return true;
     }

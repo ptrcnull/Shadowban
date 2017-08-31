@@ -23,7 +23,8 @@ public class Apology implements SubCommand {
             sender.sendMessage("§cBrak uprawnien.");
             return true;
         }
-        if (!config.contains(configName + "." + args[0])) {
+        String selector = "players." + args[0] + "." + configName;
+        if (!config.contains(selector)) {
             String message = "§cGracz " + args[0] + " nie jest ";
             switch (configName) {
                 case "mute": message += "wyciszony"; break;
@@ -33,7 +34,7 @@ public class Apology implements SubCommand {
             sender.sendMessage(message);
             return true;
         }
-        config.set(configName + "." + args[0], null);
+        config.set(selector, null);
         plugin.saveConfig();
         String message = "§aGracz " + args[0];
         switch (configName) {
