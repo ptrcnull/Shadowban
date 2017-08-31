@@ -13,6 +13,7 @@ public class HelpSubCommand implements SubCommand {
     public boolean handle(CommandSender sender, String[] args) {
         sender.sendMessage("§aPomoc dla pluginu Shadowban");
         sender.sendMessage("§a help - wyswietla ta wiadomosc");
+        sender.sendMessage("§a version - wyswietla wersje pluginu");
         if(sender.hasPermission("shadowban.see.others")) {
             sender.sendMessage("§a show [gracz] - pokazuje aktywne kary na koncie");
         } else {
@@ -37,6 +38,11 @@ public class HelpSubCommand implements SubCommand {
         if(sender.hasPermission("shadowban.silent")) {
             sender.sendMessage("§a silent - przelacza tryb cichy");
         }
+
+        if(sender.hasPermission("shadowban.reload")) {
+            sender.sendMessage("§a reload - przeladowuje konfiguracje pluginu");
+        }
+
         return true;
     }
 }
