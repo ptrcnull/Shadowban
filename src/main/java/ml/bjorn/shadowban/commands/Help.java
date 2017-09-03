@@ -1,16 +1,15 @@
-package ml.bjorn.shadowban;
+package ml.bjorn.shadowban.commands;
 
+import ml.bjorn.shadowban.SubCommand;
 import org.bukkit.command.CommandSender;
 
-public class HelpSubCommand implements SubCommand {
+public class Help extends SubCommand {
 
-    @Override
     public int getMinArgs(){
         return 0;
     }
 
-    @Override
-    public boolean handle(CommandSender sender, String[] args) {
+    public void handle(CommandSender sender, String[] args) {
         sender.sendMessage("§aPomoc dla pluginu Shadowban");
         sender.sendMessage("§a help - wyswietla ta wiadomosc");
         sender.sendMessage("§a version - wyswietla wersje pluginu");
@@ -42,7 +41,5 @@ public class HelpSubCommand implements SubCommand {
         if(sender.hasPermission("shadowban.reload")) {
             sender.sendMessage("§a reload - przeladowuje konfiguracje pluginu");
         }
-
-        return true;
     }
 }
