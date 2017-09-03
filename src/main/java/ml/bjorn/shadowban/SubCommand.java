@@ -10,6 +10,6 @@ public abstract class SubCommand {
     protected Main plugin = Main.plugin;
     protected FileConfiguration config = Main.config;
 
-    protected String lang(String path) { return Main.lang.getString(path); }
+    protected String lang(String path) { return ChatColor.translateAlternateColorCodes('&', Main.lang.getString(path)); }
     protected String langf(String path, String... args) { return String.format(lang(path), (Object[]) args); }
 }
