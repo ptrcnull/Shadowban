@@ -23,8 +23,8 @@ mute: §dMute
 ban: §dBan
 jail: §dJail
 show-reason: "%s za: %s"
-show-by: §dNadany przez: §f%s
-show-end: §dKoniec: §f%s
+show-by: "§dNadany przez: §f%s"
+show-end: "§dKoniec: §f%s"
 
 no-punishments: §aBrak kar na twoim koncie
 no-punishments-other: §aBrak kar na koncie gracza %s
