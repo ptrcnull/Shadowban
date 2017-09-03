@@ -1,5 +1,6 @@
 package ml.bjorn.shadowban;
 
+import ml.bjorn.shadowban.commands.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,17 +14,17 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
 
     private final Map<String, SubCommand> subcommands = new LinkedHashMap<>();
     {
-        subcommands.put("help", new HelpSubCommand());
-        subcommands.put("show", new ShowSubCommand());
-        subcommands.put("mute", new Punishment("mute"));
-        subcommands.put("unmute", new Apology("mute"));
-        subcommands.put("ban", new Punishment("ban"));
-        subcommands.put("unban", new Apology("ban"));
-        subcommands.put("jail", new Punishment("jail"));
-        subcommands.put("unjail", new Apology("jail"));
-        subcommands.put("silent", new SilentSubCommand());
-        subcommands.put("reload", new ReloadSubCommand());
-        subcommands.put("version", new VersionSubCommand());
+        subcommands.put("help", new Help());
+        subcommands.put("show", new Show());
+        subcommands.put("mute", new Mute());
+        subcommands.put("unmute", new Unmute());
+        subcommands.put("ban", new Jail());
+        subcommands.put("unban", new Unban());
+        subcommands.put("jail", new Ban());
+        subcommands.put("unjail", new Unjail());
+        subcommands.put("silent", new Silent());
+        subcommands.put("reload", new Reload());
+        subcommands.put("version", new Version());
     }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] arguments) {
@@ -37,7 +38,8 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
             sender.sendMessage("§cZa mało argumentów! Zobacz /sb help");
             return true;
         }
-        return subcommand.handle(sender, subcommandargs);
+        subcommand.handle(sender, subcommandargs);
+        return true;
     }
 
     @Override
