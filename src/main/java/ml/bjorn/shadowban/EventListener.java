@@ -13,6 +13,7 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.util.Vector;
 
 import java.time.Instant;
+import java.util.logging.Level;
 
 public class EventListener implements Listener {
     private Main plugin = Main.plugin;
@@ -55,6 +56,10 @@ public class EventListener implements Listener {
                     player.setVelocity(new Vector(1, 0.2, 0));
                 } else if (z < -99) {
                     player.setVelocity(new Vector(0, 0.2, 1));
+                }
+                if (x > 150 || z > 150 || x < -150 || z < -150) {
+                    plugin.getLogger().log(Level.WARNING, ChatColor.translateAlternateColorCodes('&', Main.lang.getString("may-have-antiknock")));
+                    player.teleport(plugin.getServer().getWorlds().get(0).getSpawnLocation());
                 }
             } else {
                 config.set(banSel, null);
