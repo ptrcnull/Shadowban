@@ -1,5 +1,6 @@
 package ml.bjorn.shadowban;
 
+import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -81,7 +82,7 @@ public class EventListener implements Listener {
                 double x = event.getTo().getX();
                 double z = event.getTo().getZ();
 				if ((x > 99 || x < -99 || z > 99 || z < -99) || event.getTo().getWorld() != defaultWorld) {
-					player.sendMessage("Nie mozesz tego zrobic, masz bana!");
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.lang.getString("cannot-teleport")));
 					event.setCancelled(true);
 				}
 			} else {

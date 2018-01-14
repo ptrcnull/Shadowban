@@ -17,6 +17,7 @@ can-jail: "sie ruszac"
 player-not-found: "&cNie znaleziono gracza, mozliwe ze jest offline."
 cannot-teleport-player: "&cNie mozna przeniesc gracza, mozliwe ze jest offline."
 config-reloaded: "&aKonfiguracja przeladowana!"
+cannot-teleport: "Nie mozesz tego zrobic, masz bana!"
 
 permanent: "permanentny"
 mute: "&dMute"
