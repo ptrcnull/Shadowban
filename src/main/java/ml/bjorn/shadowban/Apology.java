@@ -20,7 +20,7 @@ public abstract class Apology extends SubCommand {
         }
         config.set(selector, null);
         plugin.saveConfig();
-        sender.sendMessage(langf("player-can-now", args[0], lang("can" + configName)));
+        sender.sendMessage(langf("player-can-now", args[0], lang("can-" + configName)));
         return true;
     }
 }

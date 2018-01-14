@@ -30,9 +30,9 @@ public class Show extends SubCommand {
             if (config.contains(selector)) {
                long end = config.getLong(selector + ".end");
                 if(end > Instant.now().toEpochMilli() || end == 0L){
-                    sender.sendMessage(langf("reason", lang(type), config.getString(selector + ".reason")));
-                    sender.sendMessage(langf("by", config.getString(selector + ".by")));
-                    sender.sendMessage(langf("end", end == 0L ? lang("permanent") : sdf.format(new Date(end))));
+                    sender.sendMessage(langf("show-reason", lang(type), config.getString(selector + ".reason")));
+                    sender.sendMessage(langf("show-by", config.getString(selector + ".by")));
+                    sender.sendMessage(langf("show-end", end == 0L ? lang("permanent") : sdf.format(new Date(end))));
                     found = true;
                 } else {
                     config.set(selector, null);
