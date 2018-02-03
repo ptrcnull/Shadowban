@@ -1,5 +1,6 @@
 package ml.bjorn.shadowban;
 
+import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -12,6 +13,7 @@ import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.util.Vector;
 
 import java.time.Instant;
+import java.util.logging.Level;
 
 public class EventListener implements Listener {
     private Main plugin = Main.plugin;
@@ -55,6 +57,10 @@ public class EventListener implements Listener {
                 } else if (z < -99) {
                     player.setVelocity(new Vector(0, 0.2, 1));
                 }
+                if (x > 150 || z > 150 || x < -150 || z < -150) {
+                    plugin.getLogger().log(Level.WARNING, ChatColor.translateAlternateColorCodes('&', Main.lang.getString("may-have-antiknock")));
+                    player.teleport(plugin.getServer().getWorlds().get(0).getSpawnLocation());
+                }
             } else {
                 config.set(banSel, null);
             }
@@ -81,7 +87,7 @@ public class EventListener implements Listener {
                 double x = event.getTo().getX();
                 double z = event.getTo().getZ();
 				if ((x > 99 || x < -99 || z > 99 || z < -99) || event.getTo().getWorld() != defaultWorld) {
-					player.sendMessage("Nie mozesz tego zrobic, masz bana!");
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.lang.getString("cannot-teleport")));
 					event.setCancelled(true);
 				}
 			} else {

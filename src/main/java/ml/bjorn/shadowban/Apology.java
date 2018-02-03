@@ -1,48 +1,26 @@
 package ml.bjorn.shadowban;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 
-public class Apology implements SubCommand {
-    private Main plugin = Main.plugin;
-    private FileConfiguration config = plugin.getConfig();
-    private String configName;
+public abstract class Apology extends SubCommand {
 
-    Apology (String configName) {
-        this.configName = configName;
-    }
+    public abstract void handle(CommandSender sender, String[] args);
 
-    @Override
-    public int getMinArgs() {
-        return 1;
-    }
+    public int getMinArgs() { return 1; }
 
-    @Override
-    public boolean handle(CommandSender sender, String[] args) {
+    protected boolean handleDefault(CommandSender sender, String[] args, String configName) {
         if (!sender.hasPermission("shadowban." + configName)) {
-            sender.sendMessage("§cBrak uprawnien.");
-            return true;
+            sender.sendMessage(lang("no-permissions"));
+            return false;
         }
         String selector = "players." + args[0] + "." + configName;
         if (!config.contains(selector)) {
-            String message = "§cGracz " + args[0] + " nie jest ";
-            switch (configName) {
-                case "mute": message += "wyciszony"; break;
-                case "ban": message += "zbanowany"; break;
-                case "jail": message += "uwieziony"; break;
-            }
-            sender.sendMessage(message);
-            return true;
+            sender.sendMessage(langf("player-is-not", args[0], lang("is-" + configName)));
+            return false;
         }
         config.set(selector, null);
         plugin.saveConfig();
-        String message = "§aGracz " + args[0];
-        switch (configName) {
-            case "mute": message += " znow moze mowic."; break;
-            case "ban": message += " znow moze chodzic."; break;
-            case "jail": message += " znow moze sie ruszac."; break;
-        }
-        sender.sendMessage(message);
+        sender.sendMessage(langf("player-can-now", args[0], lang("can-" + configName)));
         return true;
     }
 }
