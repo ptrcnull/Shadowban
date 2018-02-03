@@ -14,7 +14,7 @@ public class Jail extends Punishment {
         }
         Server server = plugin.getServer();
         Player player = server.getPlayerExact(args[0]);
-        if (config.contains("jail") && config.contains("jail.x") && config.contains("jail.y") && config.contains("jail.z") && config.isInt("jail.x") && config.isInt("jail.y") && config.isInt("jail.z")) {
+        if (config.contains("jail") && config.contains("jail.x") && config.contains("jail.y") && config.contains("jail.z") && config.isDouble("jail.x") && config.isDouble("jail.y") && config.isDouble("jail.z")) {
             Boolean hasWorld = config.contains("jail.world") && config.isString("jail.world");
             World world = hasWorld ? server.getWorld(config.getString("jail.world")) : server.getWorlds().get(0);
             Double x = config.getDouble("jail.x");
