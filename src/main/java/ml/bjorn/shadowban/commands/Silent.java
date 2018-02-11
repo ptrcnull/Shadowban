@@ -15,12 +15,13 @@ public class Silent extends SubCommand {
             return;
         }
         String path = "players." + sender.getName() + ".silent";
+        config.addDefault(path, false);
         if(config.getBoolean(path, true)) {
             config.set(path, false);
-            sender.sendMessage(langf("muted", lang("they-are")));
+            sender.sendMessage(langf("muted", lang("they-are-not")));
         } else {
             config.set(path, true);
-            sender.sendMessage(langf("muted", lang("they-are-not")));
+            sender.sendMessage(langf("muted", lang("they-are")));
         }
         plugin.saveConfig();
     }
