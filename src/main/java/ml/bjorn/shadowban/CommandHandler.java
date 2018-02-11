@@ -12,6 +12,9 @@ import java.util.stream.Collectors;
 public class CommandHandler implements CommandExecutor, TabCompleter {
     private Main plugin = Main.plugin;
 
+    protected String lang(String path) { return ChatColor.translateAlternateColorCodes('&', Main.lang.getString(path)); }
+    protected String langf(String path, String... args) { return String.format(lang(path), (Object[]) args); }
+
     private final Map<String, SubCommand> subcommands = new LinkedHashMap<>();
     {
         subcommands.put("help", new Help());
@@ -30,12 +33,13 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] arguments) {
         SubCommand subcommand = arguments.length == 0 ? subcommands.get("help") : subcommands.get(arguments[0]);
         if(subcommand == null){
-            sender.sendMessage("§cNieprawidłowa komenda! Zobacz /sb help");
+            sender.sendMessage(lang("unknown-command"));
             return true;
         }
         String[] subcommandargs = arguments.length != 0 ? Arrays.copyOfRange(arguments, 1, arguments.length) : new String[]{};
         if(subcommandargs.length < subcommand.getMinArgs()) {
-            sender.sendMessage("§cZa mało argumentów! Zobacz /sb help");
+
+            sender.sendMessage(lang("too-few-arguments"));
             return true;
         }
         subcommand.handle(sender, subcommandargs);

@@ -17,7 +17,11 @@ can-jail: "sie ruszac"
 player-not-found: "&cNie znaleziono gracza, mozliwe ze jest offline."
 cannot-teleport-player: "&cNie mozna przeniesc gracza, mozliwe ze jest offline."
 config-reloaded: "&aKonfiguracja przeladowana!"
-cannot-teleport: "Nie mozesz tego zrobic, masz bana!"
+unknown-command: "&cNieprawidłowa komenda! Zobacz /sb help"
+too-few-arguments: "&cZa mało argumentów! Zobacz /sb help"
+
+cannot-teleport-ban: "&cNie mozesz tego zrobic, masz bana!"
+cannot-teleport-jail: "&cNie mozesz tego zrobic, jestes w wiezieniu!"
 
 permanent: "permanentny"
 mute: "&dMute"
@@ -34,3 +38,5 @@ jail-not-found: "Nie znaleziono poprawnego wiezienia w konfiguracji, przenosze g
 muted: "&aTeraz twoje kary &c%s &awyciszone"
 they-are: "sa"
 they-are-not: "nie sa"
+
+may-have-antiknock: "Gracz %s moze miec antiknocka!"
