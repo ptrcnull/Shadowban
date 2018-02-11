@@ -15,9 +15,9 @@
 | `/sb mute <gracz> [czas] [powod]` | wycisza gracza |
 | `/sb unmute <gracz>` | odwycisza gracza |
 | `/sb ban <gracz> [czas] [powod]` | banuje gracza |
-| `/sb unban <gracz> [czas] [powod]` | odbanowuje gracza |
+| `/sb unban <gracz>` | odbanowuje gracza |
 | `/sb jail <gracz> [czas] [powod]` | więzi gracza |
-| `/sb unjail <gracz> [czas] [powod]` | uwalnia gracza |
+| `/sb unjail <gracz>` | uwalnia gracza |
 | `/sb silent` | przełącza tryb cichy |
 
 ### Permisje:
