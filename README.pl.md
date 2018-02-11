@@ -1,10 +1,9 @@
 # Shadowban [![Build Status](https://travis-ci.org/JadaSwiry/Shadowban.svg?branch=master)](https://travis-ci.org/JadaSwiry/Shadowban)
 
+## Proste i ciche kary dla graczy
+
 #### Pobierz najnowszą wersję [tutaj](https://github.com/JadaSwiry/Shadowban/releases/latest)
 
-### Założenia:
-- Proste wymierzanie kar graczom
-- Możliwość cichego ukarania gracza
 
 ### Komendy:
 
@@ -17,9 +16,9 @@
 | `/sb mute <gracz> [czas] [powod]` | wycisza gracza |
 | `/sb unmute <gracz>` | odwycisza gracza |
 | `/sb ban <gracz> [czas] [powod]` | banuje gracza |
-| `/sb unban <gracz> [czas] [powod]` | odbanowuje gracza |
+| `/sb unban <gracz>` | odbanowuje gracza |
 | `/sb jail <gracz> [czas] [powod]` | więzi gracza |
-| `/sb unjail <gracz> [czas] [powod]` | uwalnia gracza |
+| `/sb unjail <gracz>` | uwalnia gracza |
 | `/sb silent` | przełącza tryb cichy |
 
 ### Permisje:
@@ -37,3 +36,4 @@
 - ~~możliwość zmiany tekstów~~
 - ~~więzienia~~
 - ostrzeżenia
+- angielskie tłumaczenia tekstów w grze
