@@ -19,6 +19,9 @@ public class EventListener implements Listener {
     private Main plugin = Main.plugin;
     private FileConfiguration config = plugin.getConfig();
 
+    protected String lang(String path) { return ChatColor.translateAlternateColorCodes('&', Main.lang.getString(path)); }
+    protected String langf(String path, String... args) { return String.format(lang(path), (Object[]) args); }
+
     @EventHandler (priority = EventPriority.HIGHEST)
     public void onAsyncPlayerChatEvent(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
@@ -58,7 +61,7 @@ public class EventListener implements Listener {
                     player.setVelocity(new Vector(0, 0.2, 1));
                 }
                 if (x > 150 || z > 150 || x < -150 || z < -150) {
-                    plugin.getLogger().log(Level.WARNING, ChatColor.translateAlternateColorCodes('&', Main.lang.getString("may-have-antiknock")));
+                    plugin.getLogger().log(Level.WARNING, langf("may-have-antiknock", player.getName()));
                     player.teleport(plugin.getServer().getWorlds().get(0).getSpawnLocation());
                 }
             } else {
@@ -87,7 +90,7 @@ public class EventListener implements Listener {
                 double x = event.getTo().getX();
                 double z = event.getTo().getZ();
 				if ((x > 99 || x < -99 || z > 99 || z < -99) || event.getTo().getWorld() != defaultWorld) {
-					player.sendMessage(ChatColor.translateAlternateColorCodes('&', Main.lang.getString("cannot-teleport")));
+					player.sendMessage(lang("cannot-teleport-ban"));
 					event.setCancelled(true);
 				}
 			} else {
@@ -101,7 +104,7 @@ public class EventListener implements Listener {
                 double x = event.getTo().getX();
                 double z = event.getTo().getZ();
 				if ((x > 99 || x < -99 || z > 99 || z < -99) || event.getTo().getWorld() != defaultWorld) {
-					player.sendMessage("Nie mozesz tego zrobic, jestes w wiezieniu!");
+                    player.sendMessage(lang("cannot-teleport-jail"));
 					event.setCancelled(true);
 				}
 			} else {

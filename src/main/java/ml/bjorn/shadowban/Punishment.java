@@ -54,10 +54,10 @@ public abstract class Punishment extends SubCommand {
         if (!Objects.equals(reason, "")){
             message += langf("reason", reason);
         }
-        if (!config.getBoolean(silentSel)) {
-            plugin.getServer().broadcastMessage(langf("prefix", message));
-        } else {
+        if (config.getBoolean(silentSel)) {
             sender.sendMessage(message);
+        } else {
+            plugin.getServer().broadcastMessage(langf("prefix", message));
         }
         return true;
     }
