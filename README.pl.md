@@ -4,7 +4,6 @@
 
 #### Pobierz najnowszą wersję [tutaj](https://github.com/JadaSwiry/Shadowban/releases/latest)
 
-
 ### Komendy:
 
 | Komenda | Opis działania |
@@ -32,8 +31,12 @@
 | `shadowban.silent` | wyciszanie swoich kar |
 | `shadowban.reload` | przeładowanie konfiguracji |
 
+### Zmiana języka:
+
+Żeby zmienić język pluginu na polski, zmień nazwę pliku `messages.pl.yml` na `messages.yml`.
+
 ### TODO (do zrobienia):
 - ~~możliwość zmiany tekstów~~
 - ~~więzienia~~
 - ostrzeżenia
-- angielskie tłumaczenia tekstów w grze
+- ~~angielskie tłumaczenia tekstów w grze~~

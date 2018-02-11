@@ -38,4 +38,4 @@
 - ~~ability to change texts~~
 - ~~jails~~
 - warns
-- English translation of in-game messages
+- ~~English translation of in-game messages~~

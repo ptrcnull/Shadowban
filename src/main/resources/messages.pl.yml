@@ -1,0 +1,42 @@
+prefix: "&7[&6&lJada&e&lSwiry&7] %s"
+no-permissions: "&cBrak uprawnien."
+
+player-is-not: "&cGracz %s nie jest %s."
+player-is-now: "&fGracz &e%s&f zostal %s"
+is-mute: "wyciszony"
+is-ban: "zbanowany"
+is-jail: "uwieziony"
+time: " &fna &e%s"
+reason: " &fza &e%s"
+
+player-can-now: "&aGracz %s znow moze %s."
+can-mute: "mowic"
+can-ban: "chodzic"
+can-jail: "sie ruszac"
+
+player-not-found: "&cNie znaleziono gracza, mozliwe ze jest offline."
+cannot-teleport-player: "&cNie mozna przeniesc gracza, mozliwe ze jest offline."
+config-reloaded: "&aKonfiguracja przeladowana!"
+unknown-command: "&cNieprawidłowa komenda! Zobacz /sb help"
+too-few-arguments: "&cZa mało argumentów! Zobacz /sb help"
+
+cannot-teleport-ban: "&cNie mozesz tego zrobic, masz bana!"
+cannot-teleport-jail: "&cNie mozesz tego zrobic, jestes w wiezieniu!"
+
+permanent: "permanentny"
+mute: "&dMute"
+ban: "&dBan"
+jail: "&dJail"
+show-reason: "%s za: &f%s"
+show-by: "&dNadany przez: &f%s"
+show-end: "&dKoniec: &f%s"
+
+no-punishments: "&aBrak kar na twoim koncie"
+no-punishments-other: "&aBrak kar na koncie gracza %s"
+
+jail-not-found: "Nie znaleziono poprawnego wiezienia w konfiguracji, przenosze gracza na spawn swiata %s"
+muted: "&aTeraz twoje kary &c%s &awyciszone"
+they-are: "sa"
+they-are-not: "nie sa"
+
+may-have-antiknock: "Gracz %s moze miec antiknocka!"
