@@ -34,6 +34,6 @@
 | `shadowban.reload` | przeładowanie konfiguracji |
 
 ### TODO (do zrobienia):
-- możliwość zmiany tekstów
+- ~~możliwość zmiany tekstów~~
 - ~~więzienia~~
 - ostrzeżenia
